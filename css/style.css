@@ -1,18 +1,60 @@
-*{
-	margin:0;padding:0
+/*reset styles */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, 
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output,  section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
-li{
-	list-style:none
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
 }
-img{
-	border:none
+body {
+	line-height: 1;
 }
-a{
-	text-decoration: none;
+ol, ul {
+	list-style: none;
 }
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*global settings*/
 body{
+	color: #222;
 	font-size: 16px;
 	background-color: #ffffff;
+	height: 100vh;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+section,div{
+	box-sizing: border-box;
 }
 
 /*style for inline vertical-middle*/
@@ -28,6 +70,8 @@ body{
 
 /*header of document*/
 #docHeader{
+	position: fixed;
+	top:0;
 	height: 7.4vh;
 	margin-left: 80px;
 	font-size: 14px;
@@ -55,34 +99,112 @@ nav li{
 	color: #9b9b9b;
 }
 
-/*main*/
-main{
-	margin: 18.5vh 6.7vw 16.7vh 10.4vw;
+/*first screen*/
+section#firstScreen{
+	position: fixed;
+	top: 7.4vh;
+	padding: 18.5vh 6.7vw 0 10.4vw;
 	box-sizing: border-box;
-	height: 57.4vh;
-}
-article{
-	display: inline-block;
-	width: 20.8vw;
-	color: #222;
-	vertical-align: top;
+	width: 100%;
+	z-index: 0;
+	/*temporary*/
+	display: none;
 }
 .introHeader{
 	margin-bottom: 40px;
 	font-size: 40px;
 }
 #introPic{
+	position: fixed;
+	bottom: 10vh;
+	right: 10vw;
 	width: 55.8vw;
-	display: inline-block;
+	z-index: 99
 }
 #introPic img{
 	width: 100%;
 }
 
-/*footer*/
-footer{
-	position: fixed;
-	bottom: 3.7vh;
-	width: 100%;
+/*details*/
+#details{
+	position: relative;
+	height: 92.6vh;
+	overflow: scroll;
+	z-index: 99;
+	background-color: #fafafa;
+
+	font-size: 14px;
 	text-align: center;
+	/*temporary*/
+	top: 7.4vh;
+}
+/*styles for section of details */
+.desSection{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#details h2{
+	font-size: 36px;
+}
+#products{
+	margin-top: 170px;
+}
+#store{
+	margin-top: 80px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.proItem{
+	flex:none;
+	width: 160px;
+	height: 160px;
+	margin-right: 50px;
+	margin-bottom: 50px;
+	padding-top: 44px;
+	background-color: #fff;
+	box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.03);
+}
+.proItem:nth-child(5),.proItem:nth-child(10){
+	margin-right: 0px;
+}
+.proItem img{
+	width: 50px;
+	height: 40px;
+}
+.proItem img{
+	width: 50px;
+	height: 40px;
+	margin-bottom: 30px;
+}
+#team{
+	margin-top: 70px;
+}
+#recruitment{
+}
+
+/*for details to slide to top*/
+.slideBottom{
+	top: 100vh;
+	transition: top 0.5s ease-in-out;
+}
+.slideTop{
+	top: 7.4vh;
+	transition: top 0.5s ease-in-out;
+}
+
+#details::-webkit-scrollbar {
+  width:0.5rem;
+  height: 0;
+}
+#details::-webkit-scrollbar-track{
+  border:1px solid #aaa;
+  border-radius: 5px;
+  background-color: #aaa;
+}
+#details::-webkit-scrollbar-thumb{
+  border:1px solid #333;
+  border-radius: 5px;
+  background-color: #333;
 }
