@@ -42,6 +42,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a{
+	text-decoration: none;
+	color: inherit;
+}
 
 /*global settings*/
 body{
@@ -49,6 +53,8 @@ body{
 	font-size: 16px;
 	background-color: #ffffff;
 	height: 100vh;
+	font-weight: 300;
+	font-family: sans-serif;
 }
 body::-webkit-scrollbar {
   display: none;
@@ -56,59 +62,77 @@ body::-webkit-scrollbar {
 section,div{
 	box-sizing: border-box;
 }
-
-/*style for inline vertical-middle*/
-.inline-middle{
-	display: inline-block;
-	position: relative;
-	top:50%;
-	transform:translate(0,-50%);
+.redFont{
+	color: #ff5555;
 }
 .inline-block{
 	display: inline-block;
 }
+.show{
+	display: block !important; 
+	opacity: 1 !important;
+}
 
 /*header of document*/
 #docHeader{
+	display: flex;
+	justify-content: left;
+	align-items: center;
 	position: fixed;
 	top:0;
-	height: 7.4vh;
-	margin-left: 80px;
+	width: 100%;
+	height: 80px;
+	padding-left: 80px;
 	font-size: 14px;
 	color:#9b9b9b;
+	z-index: 1;
+	background-color: #fff;
 }
 #logoDiv{
+	display: flex;
+	justify-content: left;
+	align-items: center;
 	height: 30px;
 	padding-right: 32px;
 	border-right: 1px solid #ddd;
+	vertical-align: baseline;
 }
-#logo{
+#logoDiv img{
 	width: 80px;
 	height:20px;
 }
 nav{
+	display: inline-flex;
+	align-items: center;
 	height: 30px;
 	vertical-align: middle;
 	margin-left: 30px;
 }
 nav li{
 	display: inline-block;
-	padding-right: 36px;
 }
-.nav{
+nav li a{	
 	color: #9b9b9b;
+	padding: 5px;
+	margin-right: 36px;
+	transition: background-color 0.5s ease;
+}
+nav li a:hover{
+	color: #ff5555;
+	background-color: lightgray;}
+.active{
+	color: #ff5555;
+	background-color: lightgray;}
 }
 
 /*first screen*/
 section#firstScreen{
 	position: fixed;
-	top: 7.4vh;
+	top: 80px;
 	padding: 18.5vh 6.7vw 0 10.4vw;
 	box-sizing: border-box;
 	width: 100%;
 	z-index: 0;
-	/*temporary*/
-	display: none;
 }
 .introHeader{
 	margin-bottom: 40px;
@@ -119,7 +143,6 @@ section#firstScreen{
 	bottom: 10vh;
 	right: 10vw;
 	width: 55.8vw;
-	z-index: 99
 }
 #introPic img{
 	width: 100%;
@@ -128,15 +151,14 @@ section#firstScreen{
 /*details*/
 #details{
 	position: relative;
-	height: 92.6vh;
+	height: calc(100% - 80px);
 	overflow: scroll;
-	z-index: 99;
 	background-color: #fafafa;
 
 	font-size: 14px;
 	text-align: center;
-	/*temporary*/
-	top: 7.4vh;
+
+	transition: top 0.5s ease-in-out;
 }
 /*styles for section of details */
 .desSection{
@@ -146,12 +168,25 @@ section#firstScreen{
 }
 #details h2{
 	font-size: 36px;
+	font-weight: 400;
 }
+#details h3{
+	font-size: 16px;
+	font-weight: 400;
+}
+#details h4{
+	font-size: 14px;
+	color:#666;
+}
+/*products section*/
 #products{
-	margin-top: 170px;
+	padding-top: 170px;
+}
+#subhead{
+	margin-top: 24px;
 }
 #store{
-	margin-top: 80px;
+	margin-top: 60px;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
@@ -160,11 +195,12 @@ section#firstScreen{
 	flex:none;
 	width: 160px;
 	height: 160px;
+	box-sizing: border-box;
 	margin-right: 50px;
 	margin-bottom: 50px;
 	padding-top: 44px;
 	background-color: #fff;
-	box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.03);
+	box-shadow: 0px 4px 10px 5px rgba(0,0,0,0.01);
 }
 .proItem:nth-child(5),.proItem:nth-child(10){
 	margin-right: 0px;
@@ -178,20 +214,192 @@ section#firstScreen{
 	height: 40px;
 	margin-bottom: 30px;
 }
+.nonMgBtm{
+	margin-bottom: 0;
+}
+/*team section*/
 #team{
-	margin-top: 70px;
+	padding-top: 120px;
 }
-#recruitment{
-}
+#scenes{
+	margin: 60px auto 50px auto;
+	position: relative;
 
+	width: 800px;
+	height: 290px;
+	
+	box-shadow: 0 8px 18px 8px rgba(0,0,0,0.03)
+}
+#scenes img{
+	width: 100%;
+	height: 100%;
+}
+#introText{
+	width: 740px;
+	height: 240px;
+	margin: 0 auto;
+	border: 1px solid #eee;
+	padding-left:30px;
+	padding-right: 30px;
+	line-height: 30px;
+	text-align: justify;
+	text-align-last: left;
+}
+#introText p{
+	position: relative;
+	top: 50%;
+	transform: translate(0,-50%);
+	color:#666;
+}
+#beliefs{
+	margin-top: 50px ;
+	margin-bottom: 120px;
+	margin-left: auto;
+	margin-right: auto;
+
+
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+#beliefs>div:first-child{
+	width: 320px;
+}
+#beliefs>div:nth-child(2){
+	width: 300px;
+}
+#beliefs>div:nth-child(3){
+	width: 320px;
+}
+#beliefs img{
+	width:44px;
+	height: 44px;
+	margin-bottom: 30px;
+}
+#beliefs p{
+	font-size: 14px;
+	margin-top: 14px;
+	color:#666;
+}
+/*recuitment*/
+#recruitment{
+	background-color: #fff;
+	padding: 120px;
+}
+#recruitment > h2+h3{
+	font-size: 20px;
+	margin-top: 30px;
+	margin-bottom: 80px;
+}
+#recruitment h4{
+	margin-bottom: 20px;
+	font-size: 18px;
+	color: #222;
+	font-weight: 400;
+}
+.post{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 900px;
+	height: 100px;
+	margin: 0 auto 26px auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	border:1px solid #eee;
+	text-align: left;
+	color: #999;
+}
+.post:last-child{
+	margin-bottom: -2px;
+}
+.post:hover{
+	border:1px solid #ff5555;
+}
+.postLink{
+	display: block;
+}
+.postDtl{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 255;
+	width: 100%;
+	height: 100vh;
+
+	color: #666;
+	background-color: rgba(0,0,0,0.3);
+	overflow: scroll;
+
+	display: none;
+	opacity:0
+}
+.postContent{
+	width: 860px;
+	margin: 80px auto 40px auto;
+	padding: 70px 40px 120px 70px;
+	background-color: #fff;
+}
+#recruitment .post .postContent>h3{
+	font-size: 30px;
+	color: #222;
+}
+#recruitment .post .postContent>h4:first-of-type{
+	font-size: 18px;
+	color: #999;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#recruitment .post .postContent>h4:nth-of-type(2){
+	font-size: 24px;
+	color: #ff5555;
+	margin-bottom: 50px;
+}
+#recruitment .post .postContent>h5{
+	font-size: 16px;
+	color: #222;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#recruitment .post .postContent li{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#recruitment .post .postContent > p:last-of-type{
+	margin-top: 60px;
+
+}
+#benefits{
+}
+#benefits>h3{
+	margin-top: 60px;
+	font-size: 16px;
+}
+#benefits li{
+	margin-top:20px;
+	color: #666;
+}
+/*footer*/
+footer{
+	display: inline-flex;
+	width: 900px;
+	height: 80px;
+	background-color: #fafafa;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	color: #999;
+}
+.addrTag{
+	color: #666;
+}
 /*for details to slide to top*/
 .slideBottom{
 	top: 100vh;
-	transition: top 0.5s ease-in-out;
 }
 .slideTop{
-	top: 7.4vh;
-	transition: top 0.5s ease-in-out;
+	top: 0px;
 }
 
 #details::-webkit-scrollbar {
